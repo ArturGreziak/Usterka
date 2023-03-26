@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"><div>
+    <script type="text/babel">
+        const Title = () => <h1>Mój tytuł</h1>
+
+        const Post = (props) => {
+            return (
+                    <div>
+                        <h2>{props.title}</h2>
+                        <p>{props.shortContent}</p>
+                        <p>{props.content}</p>
+                        <p>{props.showContent}</p>
+                        <button>Czytaj więcej</button>
+                        <hr />
+                    </div>
+            );
+        }
+
+            const Blog = function(){
+                    const posts = [
+                        {
+                            title: "Przepis na naleśniki", 
+                            shortContent: "Na naturalnym mleku...", 
+                            id: 2, 
+                            content: 'mleko, jajka zmieszać', 
+                            showContent: 'true'
+                        },
+                        {
+                            title: "Przepis na kurczaka", 
+                            shortContent: "Na ostro...", 
+                            id: 3, 
+                            content: 'pokroić kurczaka usmażyć', 
+                            showContent: 'false',
+
+                        },
+                    ];
+                    const postList = posts.map(el => (
+                    <Post
+                        key = {el.id}
+                        title={el.title}
+                        content={el.content}
+                        showContent={showContent}
+                        shortContent={el.shortContent}
+                         />
+                ));
+                return (
+                    <div>
+                        <p>To jest blog o gotowaniu</p>
+                        {postList}
+                    </div>
+                )
+            }
+
+            ReactDOM.render(
+                <Blog />,
+                document.getElementById('root'));
+
+    </script>
+</body>
+</html>
